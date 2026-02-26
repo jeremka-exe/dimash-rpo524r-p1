@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<section class="news-block">
+    <div class="container-fluid">
+        <div class="news-block-content">
+            <h3>{{ post.title }}</h3>
+            <p class="mb-15">{{ post.created_at|date:"d.m.Y"}}</p>
+            <img src="{{ post.image_url }}" alt="" class="rounded-img">
+            <p class="mb-15">{{ post.content }}</p>
+            <a href="#">#{{ post.category.name }}</a>
+        </div>
+        <div class="adv-block-content">
+            <h3>Advertising</h3>
+            <div class="adv-block__info">
+                {% for adv in advs %}
+        <img src="{{ adv.image_url }}" alt="{{ adv.name }}">
+    {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="similar-news">
+    <h3>Похожие новости</h3>
+
+    <div class="similar-news-grid">
+        {% for similar in similar_posts %}
+        <div class="news-block__card">
+            <a href="{% url 'read_news_page' pk=similar.pk %}">
+                <img src="{{ similar.image_url }}" class="news-block__img">
+            </a>
+
+            <div class="news-block__info">
+                <h4>{{ similar.title|truncatewords:7 }}</h4>
+                <span>{{ similar.created_at|date:"d.m.Y" }}</span>
+                <a href="{% url 'read_news_page' pk=similar.pk %}">READ</a>
+            </div>
+        </div>
+        {% empty %}
+        <p>No similar news</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
