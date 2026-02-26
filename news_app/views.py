@@ -4,7 +4,7 @@ from django.db.models import Q, Func, F
 
 def home_page(request):
     hot_posts = Post.objects.all().order_by('-created_at')[:4]
-    posts = Post.objects.all().order_by('-created_at')
+    posts = Post.objects.all().order_by('-created_at')[:6]
     advs = Adv.objects.order_by('?')[:4]
     context = {
         'hot_posts': hot_posts,
