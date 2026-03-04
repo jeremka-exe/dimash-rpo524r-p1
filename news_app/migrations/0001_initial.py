@@ -16,17 +16,17 @@ class Migration(migrations.Migration):
             name='Category',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, verbose_name='Категория атауы')),
+                ('name', models.CharField(max_length=100, verbose_name='Название категории')),
             ],
         ),
         migrations.CreateModel(
             name='Post',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255, verbose_name='Жаңалықтың тақырыбы')),
-                ('content', models.TextField(verbose_name='Жаңалықтың сипаттамасы')),
-                ('image_url', models.CharField(max_length=500, verbose_name='Суреттің URL сілтемесі')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Жариялау уақыты мен күні')),
+                ('title', models.CharField(max_length=255, verbose_name='Тема новостей')),
+                ('content', models.TextField(verbose_name='Описание новости')),
+                ('image_url', models.CharField(max_length=500, verbose_name='URL-ссылка на изображение')),
+                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Время и дата публикации')),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='news_app.category', verbose_name='Категория')),
             ],
         ),
