@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Category, Adv
-from django.db.models import Q, Func, F
+from django.db.models import Q
 
 def home_page(request):
     hot_posts = Post.objects.all().order_by('-created_at')[:4]
