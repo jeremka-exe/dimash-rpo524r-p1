@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='adv',
             name='name',
-            field=models.CharField(default='Company name', max_length=255, verbose_name='Компания аты'),
+            field=models.CharField(default='Company name', max_length=255, verbose_name='Название компании'),
         ),
     ]
